@@ -1,6 +1,6 @@
 # GEO1000 - Assignment 4
-# Authors:
-# Studentnumbers:
+# Authors: Maundri Prohanggo & Pratyush Kumar
+# Studentnumbers: 5151279 & 5359252
 
 import math
 

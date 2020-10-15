@@ -1,6 +1,6 @@
 # GEO1000 - Assignment 4
-# Authors:
-# Studentnumbers:
+# Authors: Maundri Prihanggo & Pratyush Kumar
+# Studentnumbers: 5151279 & 5359252
 
 from reader import read
 from geometry import Rectangle, Circle, Point

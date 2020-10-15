@@ -1,6 +1,6 @@
 # GEO1000 - Assignment 4
-# Authors:
-# Studentnumbers:
+# Authors: Maundri Prihanggo & Pratyush Kumar
+# Studentnumbers: 5151279 & 5359252
 
 from geometry import Point, Rectangle, Circle
 from strips import StripStructure

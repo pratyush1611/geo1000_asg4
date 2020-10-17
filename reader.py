@@ -16,6 +16,9 @@ def read(file_nm, no_strips):
     
     Returns - None or a StripStructure instance
     """
+    file = open(file_nm)
+    for line in file :
+        if line[0] == str('#') :
     pass
 
 

@@ -118,8 +118,7 @@ class Rectangle(object):
         Returns - float
         """
         #width = delta x
-        #return( float(self.ur.x - self.ll.x) )
-        pass
+        return( float(self.ur.x - self.ll.x) )
 
 
 def _test():

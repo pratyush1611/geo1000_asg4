@@ -31,6 +31,7 @@ class Point(object):
         
         returns - True / False
         """
+        
         pass
 
     def distance(self, other):
@@ -90,7 +91,8 @@ class Rectangle(object):
     def __str__(self):
         """Returns WKT String "POLYGON ((x0 y0, x1 y1, ..., x0 y0))"
         """
-        pass
+        return( f"POLYGON (( {self.ll.x} {self.ll.y}, {self.ur.x} {self.ll.y}, {self.ur.x} {self.ur.y}, {self.ll.x} {self.ur.y}, {self.ll.x} {self.ll.y}, ))" )
+        
 
     def intersects(self, other):
         """Checks whether other shape has any interaction with

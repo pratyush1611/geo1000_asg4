@@ -1,9 +1,9 @@
 # GEO1000 - Assignment 4
 # Authors: Maundri Prohanggo & Pratyush Kumar
 # Studentnumbers: 5151279 & 5359252
-
+#%%
 import math
-
+#%%
 # __all__ leaves out _test method and only makes
 # the classes available for "from geometry import *":
 __all__ = ["Point", "Circle", "Rectangle"] 
@@ -29,10 +29,14 @@ class Point(object):
         
         other - Point, Circle or Rectangle
         
-        returns - True / False
+        returns - True / Falses
         """
-        
-        pass
+        if isinstance(other, Point): #point class
+            return(True if(other.x==self.x and other.y==self.y ) else False)  
+        elif isinstance(other, Circle): #circle class
+            return(  )
+        else: #remains rectangle class
+            return(  )
 
     def distance(self, other):
         """Returns cartesian distance between self and other Point

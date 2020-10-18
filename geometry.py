@@ -92,7 +92,7 @@ class Rectangle(object):
         """Returns WKT String "POLYGON ((x0 y0, x1 y1, ..., x0 y0))"
         """
         return( f"POLYGON (( {self.ll.x} {self.ll.y}, {self.ur.x} {self.ll.y}, {self.ur.x} {self.ur.y}, {self.ll.x} {self.ur.y}, {self.ll.x} {self.ll.y}, ))" )
-        
+
 
     def intersects(self, other):
         """Checks whether other shape has any interaction with
@@ -109,13 +109,16 @@ class Rectangle(object):
         
         Returns - float
         """
-        pass
+        #width = delta x
+        return( float(self.ur.y - self.ll.y) )
 
     def height(self):
         """Returns the height of the Rectangle.
         
         Returns - float
         """
+        #width = delta x
+        #return( float(self.ur.x - self.ll.x) )
         pass
 
 

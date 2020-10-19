@@ -32,10 +32,11 @@ class Point(object):
         returns - True / Falses
         """
         if isinstance(other, Point): #point class
-            return(True if(other.x==self.x and other.y==self.y ) else False)  
-        elif isinstance(other, Circle): #circle class
-            return(  )
-        else: #remains rectangle class
+            return(True if(other.x==self.x and other.y==self.y ) else False)   #trur if intersects
+        elif isinstance(other, Circle): #circle class 
+            #compute dist b/w points if >radius => good
+            return( True if( sqrt( (Circle.center.y - other.y)**2 + (Circle.center.x - other.x)**2) = Circle.radius) esle False )
+        elif isinstance(other, Rectangle): #remains rectangle class
             return(  )
 
     def distance(self, other):

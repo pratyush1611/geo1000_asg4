@@ -35,7 +35,7 @@ class Point(object):
             return(True if(other.x==self.x and other.y==self.y ) else False)   #trur if intersects
         elif isinstance(other, Circle): #circle class 
             #compute dist b/w points if >radius => good
-            return( True if(  = Circle.radius) esle False )
+            return( True if( other.distance(Circle.center) == Circle.radius) esle False )
         elif isinstance(other, Rectangle): #remains rectangle class
             return( True if((other.x > Rectangle.ll.x and other.x < Rectangle.ur.x ) or (other.y > Rectangle.ll.y and other.y < Rectangle.ur.y )) else False )
 

@@ -24,7 +24,25 @@ class StripStructure(object):
         # Extend this method,
         # so that the right number of strip objects (with the correct extent)
         # are appended to the strips list
-        pass
+        # assuming that the extent is a rectangle instance
+        # should have no_strips no of strips as rectangle instances, need to divide the extent into multiple rects
+        ll = extent.ll
+        ur = extent.ur
+        del_x = ur.x - ll.x 
+
+        strip_leng= del_x/no_strips
+        new_ll_x = ll.x
+        new_ur_x = ur.x
+        for _ in range(no_strips):
+            
+            
+            s = Strip(Rectangle( Point(new_ll_x , ll.y), Point( new_ur_x, ur.y)  )  )
+            new_ll_x += strip_leng
+            new_ur_x += strip_leng
+            #append a strip rect instance to strips list
+            self.strips.append(s)
+        
+
 
     def find_overlapping_strips(self, shape):
         """Returns a list of strip objects for which their rectangle intersects 

@@ -35,9 +35,9 @@ class Point(object):
             return(True if(other.x==self.x and other.y==self.y ) else False)   #trur if intersects
         elif isinstance(other, Circle): #circle class 
             #compute dist b/w points if >radius => good
-            return( True if( other.distance(Circle.center) == Circle.radius) esle False )
+            return( True if( self.distance(other.center) == other.radius) esle False )
         elif isinstance(other, Rectangle): #remains rectangle class
-            return( True if((other.x > Rectangle.ll.x and other.x < Rectangle.ur.x ) or (other.y > Rectangle.ll.y and other.y < Rectangle.ur.y )) else False )
+            return( True if((self.x > other.ll.x and self.x < other.ur.x ) or (self.y > other.ll.y and self.y < other.ur.y )) else False )
 
     def distance(self, other):
         """Returns cartesian distance between self and other Point
@@ -79,7 +79,12 @@ class Circle(object):
         
         Returns - True / False
         """
-        pass
+        if isinstance(other, Point):
+            return( other.intersects(self) )
+        elif isinstance(other, Circle):
+            return( other.center.intersects(self.center) )
+        elif isinstance(other, Rectangle):
+            return(  )
 
 
 class Rectangle(object):

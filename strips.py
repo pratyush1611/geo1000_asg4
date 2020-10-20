@@ -50,7 +50,11 @@ class StripStructure(object):
         
         Returns - list of Strips
         """
-        pass
+        ls=[]
+        for i in self.strips:
+            if i.rect.intersects(shape):
+                ls.append(i)
+        return(ls)
 
     def query(self, shape):
         """Returns a list of points that overlaps the given shape.

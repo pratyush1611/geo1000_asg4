@@ -151,7 +151,7 @@ class Rectangle(object):
         elif isinstance(other, Circle):
             return(other.intersects(self))
         elif isinstance(other, Rectangle):
-            return()
+            return not (self.ur.x < other.ll.x or self.ll.x > other.ur.x or self.ur.y < other.ll.y or self.ll.y > other.ur.y)
 
     def width(self):
         """Returns the width of the Rectangle.

@@ -113,7 +113,7 @@ class Circle(object):
                 return(True)
             if(self.center.intersects(r_u)):
                 return(True)
-            if(self.center.intersects(r_u)):
+            if(self.center.intersects(r_r)):
                 return(True)
             if(self.center.intersects(r_l)):
                 return(True)

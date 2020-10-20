@@ -35,7 +35,7 @@ class Point(object):
             return(True if(other.x==self.x and other.y==self.y ) else False)   #trur if intersects
         elif isinstance(other, Circle): #circle class 
             #compute dist b/w points if >radius => good
-            return( True if( self.distance(other.center) == other.radius) esle False )
+            return( True if( self.distance(other.center) == other.radius) else False )
         elif isinstance(other, Rectangle): #remains rectangle class
             return( True if((self.x > other.ll.x and self.x < other.ur.x ) or (self.y > other.ll.y and self.y < other.ur.y )) else False )
 
@@ -84,8 +84,26 @@ class Circle(object):
         elif isinstance(other, Circle):
             return( other.center.intersects(self.center) )
         elif isinstance(other, Rectangle):
-            return(  )
+            ll = other.ll
+            ur = other.ur
+            lr = Point(other.ur.x , other.ll.y)
+            ul = Point(other.ll.x , other.ur.y)
+            
+            #check for if circle is in/on the rectangle corners
+            if(ll.intersects(self)):
+                return( True )
+            if(lr.intersects(self)):
+                return( True )
+            if(ur.intersects(self)):
+                return( True )
+            if(ul.intersects(self)):
+                return( True )
+            # condition if the circle lies within the rectangle
+            if(self.center.intersects(other)):
+                return(True)
 
+            else:
+                return(False)
 
 class Rectangle(object):
 

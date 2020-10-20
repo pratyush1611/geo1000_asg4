@@ -88,7 +88,7 @@ class Circle(object):
             ur = other.ur
             lr = Point(other.ur.x , other.ll.y)
             ul = Point(other.ll.x , other.ur.y)
-            
+            r = self.radius
             #check for if circle is in/on the rectangle corners
             if(ll.intersects(self)):
                 return( True )
@@ -100,8 +100,24 @@ class Circle(object):
                 return( True )
             # condition if the circle lies within the rectangle
             if(self.center.intersects(other)):
+                return(True) 
+            # TODO: check if the circle is about to approach and intersect the corner
+            # perpendicular distance from line should be > radius
+            # or 4 outer rectangles can be defined using coordinates mix with the radius of the circle
+            r_b=Rectangle(Point(ll.x , ll.y- r ) , lr)
+            r_u=Rectangle(ul , Point( ur.x, ur.y + r))
+            r_r=Rectangle(lr , Point(lr.x+r ,ur.y ))
+            r_l=Rectangle(Point( ll.x-r, ll.y) , ul)
+            
+            if(self.center.intersects(r_b)):
                 return(True)
-
+            if(self.center.intersects(r_u)):
+                return(True)
+            if(self.center.intersects(r_u)):
+                return(True)
+            if(self.center.intersects(r_l)):
+                return(True)
+                
             else:
                 return(False)
 

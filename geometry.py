@@ -42,7 +42,7 @@ class Point(object):
     def distance(self, other):
         """Returns cartesian distance between self and other Point
         """
-        Returen( sqrt( (self.y - other.y)**2 + (self.x - other.x)**2) )
+        return( sqrt( (self.y - other.y)**2 + (self.x - other.x)**2) )
 
 
 class Circle(object):

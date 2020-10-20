@@ -82,7 +82,7 @@ class Circle(object):
         if isinstance(other, Point):
             return( other.intersects(self) )
         elif isinstance(other, Circle):
-            return( other.center.intersects(self.center) )
+            return( other.center.intersects(self) )
         elif isinstance(other, Rectangle):
             ll = other.ll
             ur = other.ur
@@ -130,7 +130,12 @@ class Rectangle(object):
         
         Returns - True / False
         """
-        pass
+        if isinstance(other , Point):
+            return(other.intersects(self))
+        elif isinstance(other, Circle):
+            return(other.intersects(self))
+        elif isinstance(other, Rectangle):
+            return()
 
     def width(self):
         """Returns the width of the Rectangle.

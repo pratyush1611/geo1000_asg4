@@ -91,12 +91,12 @@ class StripStructure(object):
         
         Returns - None
         """
-        Flag=False
-        for strip in self.strips:
-            if strip.rect.intersects(pt):
-
-        pass
-
+        strips = self.strips
+        for strip in strips:
+            if pt.intersects(strip.rect):
+                strip.points.append(pt)
+        #TODO: strip overlap put in the left one
+        return(None)
     def print_strip_statistics(self):
         """Prints:
         * how many strips there are in the structure

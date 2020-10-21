@@ -95,6 +95,7 @@ class StripStructure(object):
         for strip in strips:
             if pt.intersects(strip.rect):
                 strip.points.append(pt)
+                break
         #TODO: strip overlap put in the left one
         return(None)
     def print_strip_statistics(self):

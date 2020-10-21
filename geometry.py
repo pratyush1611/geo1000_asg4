@@ -159,7 +159,7 @@ class Rectangle(object):
         Returns - float
         """
         #width = delta x
-        return( float(self.ur.y - self.ll.y) )
+        return( float(self.ur.x - self.ll.x) )
 
     def height(self):
         """Returns the height of the Rectangle.
@@ -167,7 +167,7 @@ class Rectangle(object):
         Returns - float
         """
         #width = delta x
-        return( float(self.ur.x - self.ll.x) )
+        return( float(self.ur.y - self.ll.y) )
 
 
 def _test():

@@ -37,7 +37,7 @@ class Point(object):
             #compute dist b/w points if >radius => good
             return( True if( self.distance(other.center) <= other.radius) else False )
         elif isinstance(other, Rectangle): #remains rectangle class
-            return( True if((self.x > other.ll.x and self.x < other.ur.x ) or (self.y > other.ll.y and self.y < other.ur.y )) else False )
+            return( True if((self.x >= other.ll.x and self.x <= other.ur.x ) or (self.y >= other.ll.y and self.y <= other.ur.y )) else False )
 
     def distance(self, other):
         """Returns cartesian distance between self and other Point

@@ -91,7 +91,7 @@ class StripStructure(object):
         
         Returns - None
         """
-        strips = self.strips
+        strips = self.strips.find_overlapping_strips(pt)
         for strip in strips:
             if pt.intersects(strip.rect):
                 strip.points.append(pt)

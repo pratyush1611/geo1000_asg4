@@ -66,8 +66,18 @@ class StripStructure(object):
         with the query shape.
         
         Returns - list of Points
-        """
-        pass
+        """ 
+        pt_list = []
+        overlap_strips = self.strips.find_overlapping_strips(shape) # list of overlapping strip objects 
+        for strip in overlap_strips:
+            # check for intersections of points in the strips with shapes
+            strp_pnt = strip.points #list of points in strip
+            for pnt in strp_pnt:
+                if pnt.intersects(shape):
+                    pt_list.append(pnt)
+        
+        return( pt_list )
+
 
     def append_point(self, pt):
         """Appends a point object to the list of points of the correct strip
@@ -81,6 +91,10 @@ class StripStructure(object):
         
         Returns - None
         """
+        Flag=False
+        for strip in self.strips:
+            if strip.rect.intersects(pt):
+
         pass
 
     def print_strip_statistics(self):

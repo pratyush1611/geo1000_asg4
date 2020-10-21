@@ -82,7 +82,7 @@ class Circle(object):
         if isinstance(other, Point):
             return( other.intersects(self) )
         elif isinstance(other, Circle):
-            return( other.center.intersects(self) )
+            return( True if (other.center.distance(self.center) <= (self.radius + other.radius)) else False )
         elif isinstance(other, Rectangle):
             ll = other.ll
             ur = other.ur

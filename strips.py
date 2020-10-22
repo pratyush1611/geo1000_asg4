@@ -68,7 +68,9 @@ class StripStructure(object):
         Returns - list of Points
         """ 
         pt_list = []
-        overlap_strips = self.strips.find_overlapping_strips(shape) # list of overlapping strip objects 
+        # overlap_strips = self.strips .find_overlapping_strips(shape) 
+        # list of overlapping strip objects 
+        overlap_strips = [strip_item.find_overlapping_strips(shape) for strip_item in self.strips]
         for strip in overlap_strips:
             # check for intersections of points in the strips with shapes
             strp_pnt = strip.points #list of points in strip

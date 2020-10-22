@@ -17,18 +17,18 @@ def read(file_nm, no_strips):
     Returns - None or a StripStructure instance
     """
     with open (file_nm, 'r') as fh:
-        line = [c for c in fh.readlines() if not c.startswith('#')]
-        bbox = (line[0].strip().split())
-        if len(bbox) == 4 :
-            if bbox [2] > bbox [0] and bbox [3] > bbox [1] : 
-                # a = []
-                b = StripStructure(Rectangle(Point(bbox[0], bbox[1]), Point(bbox[2], bbox[3])), no_strips)
-                # for i in range (1,len(list(line))):
-                #     a.append(line[i].strip().split(" "))
-                a = [i.split() for i in line[1:]]
-                for j in a:
-                    b.append_point(Point(j[0], j[1]))
-                return b
+        lines_without_comment = [c for c in fh.readlines() if not c.startswith('#')]
+        bbox = (lines_without_comment[0].strip().split())
+        if len(bbox) == 4 : # there are exactly 2 coordinates in bbox
+            if bbox [2] > bbox [0] and bbox [3] > bbox [1] : # ll and ul are satisfied
+                structure = StripStructure(Rectangle(Point(bbox[0], bbox[1]), Point(bbox[2], bbox[3])), no_strips)
+                points_list = [i.split() for i in lines_without_comment[1:]]
+                for pt in points_list:
+                    structure.append_point(Point(pt[0], pt[1]))
+                return structure
+
+            else:
+                return None
         else :
             return None
 

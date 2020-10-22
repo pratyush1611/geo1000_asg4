@@ -122,6 +122,5 @@ def main():
             else:
                 print_statistics(structure.query(parse(in_str)))
 
-
 if __name__ == "__main__":
     main()

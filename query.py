@@ -44,10 +44,20 @@ def print_statistics(result):
                 left = point
             if point.x > right.x or (point.x == right.x and point.y > right.y):
                 right = point
-        print ("leftmost : POINT", left, "id :", id(left))
-        print ("righmost : POINT", right, "id :", id(right))
+        print("""
++--------------+
++ Result       +
++--------------+""")
+        print(f"leftmost : {left} id: {id(left)}")
+        print(f"rightmost: {right} id: {id(right)}")
     else :
-        print("no overlapping points")
+        not_found = """
++--------------+ 
++ Result   '^' + 
++--------------+ 
+no overlapping points found inside the shape
+"""
+        print(not_found)
 
 def print_help():
     """Prints a help message to the user, what can be done with the program.

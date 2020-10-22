@@ -68,7 +68,7 @@ class StripStructure(object):
         Returns - list of Points
         """ 
         pt_list = []
-        overlap_strips = self.strips .find_overlapping_strips(shape) 
+        overlap_strips = self.find_overlapping_strips(shape) 
         # list of overlapping strip objects 
         # overlap_strips = [strip_item.find_overlapping_strips(shape) for strip_item in self.strips]
         for strip in overlap_strips:
@@ -95,6 +95,8 @@ class StripStructure(object):
         """
         # strips = [strip_item.find_overlapping_strips(pt) for strip_item in self.strips] 
         # strips = self.strips.find_overlapping_strips(pt)
+
+        #TODO: BUG HERE  PLSS FIXXXXX
         strips = self.find_overlapping_strips(pt)
         for strip in strips:
             if pt.intersects(strip.rect):
@@ -119,6 +121,7 @@ class StripStructure(object):
 
         for id, strip in enumerate(self.strips):
             print(f"#{id+1} with {len(strip.points)} points, ll: {strip.rect.ll}, ur: {strip.rect.ur}")
+            # print(strip.points)
             # print(f"ID: {id+1}")
             # print(f"No. of points in strips: {len(strip.points)}")
             # print(f"Lower left of strip: {strip.rect.ll}")

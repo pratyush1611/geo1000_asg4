@@ -129,8 +129,15 @@ class Rectangle(object):
         """
         assert isinstance(pt_ll, Point)
         assert isinstance(pt_ur, Point)
-        self.ll = pt_ll
-        self.ur = pt_ur
+
+        #if the user didnt understand lower left and upper right properly and gave the points in wrong order:
+        if (pt_ll.x>pt_ur.x) or (pt_ll.y>pt_ur.y):
+            self.ll= Point( min(pt_ll.x,pt_ur.x), min(pt_ll.y,pt_ur.y))
+            self.ur= Point( max(pt_ll.x,pt_ur.x), max(pt_ll.y,pt_ur.y))
+
+        else:
+            self.ll = pt_ll
+            self.ur = pt_ur
 
     def __str__(self):
         """Returns WKT String "POLYGON ((x0 y0, x1 y1, ..., x0 y0))"
@@ -151,7 +158,20 @@ class Rectangle(object):
         elif isinstance(other, Circle):
             return(other.intersects(self))
         elif isinstance(other, Rectangle): #using Separating Axis Theorem
-            return not (self.ur.x < other.ll.x or self.ll.x > other.ur.x or self.ur.y < other.ll.y or self.ll.y > other.ur.y)
+            # from separating axis theorem
+            # return not (self.ur.x < other.ll.x or self.ll.x > other.ur.x or self.ur.y < other.ll.y or self.ll.y > other.ur.y)
+            
+            #other implementation
+            if( (self.ll.x <= other.ll.x + other.width()) and 
+                (self.ll.x + self.width() >= other.ll.x) and
+                (self.ll.y <= other.ll.y + other.height()) and 
+                (self.ll.y + self.height() >= other.ll.y) ):
+                return (True)
+            else:
+                return(False)
+
+            # return( True if(  ) else False)
+
 
     def width(self):
         """Returns the width of the Rectangle.
@@ -183,11 +203,23 @@ def _test():
 
     c = Circle(Point(-1, -1), 1)
     r = Rectangle(Point(0,0), Point(10,10))
-    assert not c.intersects(r)
+    # assert not c.intersects(r)
 
     # Extend this method to be sure that you test all intersects methods!
     # Read Section 16.5 of the book if you have never seen the assert statement
 
+    # circ - rect
+    c2 = Circle(Point(0, -1), 1)
+    # assert not c2.intersects(r)
+
+    # rect - rect
+    r2 = Rectangle(Point(4,5), Point(6,7))
+    r3 = Rectangle(Point(-3,-3), Point(15,15))
+    r4 = Rectangle(Point(-2,-2), Point(0,0))
+    assert r.intersects(r2)
+    assert r.intersects(r3)
+    assert r.intersects(r4)
+    assert not r4.intersects(r2)
 
 if __name__ == "__main__":
     _test()

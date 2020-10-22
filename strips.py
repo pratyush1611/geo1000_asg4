@@ -28,11 +28,11 @@ class StripStructure(object):
         # should have no_strips no of strips as rectangle instances, need to divide the extent into multiple rects
         ll = extent.ll
         ur = extent.ur
-        del_x = ur.x - ll.x 
+        del_x = extent.width
 
-        strip_leng= del_x/no_strips
+        strip_leng = del_x/no_strips
         new_ll_x = ll.x
-        new_ur_x = ur.x
+        new_ur_x = ll.x + strip_leng
         for _ in range(no_strips):
             
             
@@ -68,7 +68,9 @@ class StripStructure(object):
         Returns - list of Points
         """ 
         pt_list = []
-        overlap_strips = self.strips.find_overlapping_strips(shape) # list of overlapping strip objects 
+        # overlap_strips = self.strips .find_overlapping_strips(shape) 
+        # list of overlapping strip objects 
+        overlap_strips = [strip_item.find_overlapping_strips(shape) for strip_item in self.strips]
         for strip in overlap_strips:
             # check for intersections of points in the strips with shapes
             strp_pnt = strip.points #list of points in strip
@@ -91,7 +93,8 @@ class StripStructure(object):
         
         Returns - None
         """
-        strips = self.strips.find_overlapping_strips(pt)
+        strips = [strip_item.find_overlapping_strips(pt) for strip_item in self.strips] 
+        #self.strips.find_overlapping_strips(pt)
         for strip in strips:
             if pt.intersects(strip.rect):
                 strip.points.append(pt)
@@ -110,13 +113,15 @@ class StripStructure(object):
         
         Returns - None
         """
-        print(f"No. of strips in the structure: {len(self.strips)}")
+        # format for print output: #1 with 33 points, ll: POINT (0.0 0.0), ur: POINT (2.0 10.0)
+        print(f"{len(self.strips)} strips")
 
         for id, strip in enumerate(self.strips):
-            print(f"ID: {id+1}"")
-            print(f"No. of points in strips: {len(strip.points)}")
-            print(f"Lower left of strip: {strip.rect.ll}")
-            print(f"Upper right of strip: {strip.rect.ur}")
+            print(f"#{id+1} with {len(strip.points)} points, ll: {strip.rect.ll}, ur: {strip.rect.ur}")
+            # print(f"ID: {id+1}")
+            # print(f"No. of points in strips: {len(strip.points)}")
+            # print(f"Lower left of strip: {strip.rect.ll}")
+            # print(f"Upper right of strip: {strip.rect.ur}")
         return(None)
 
     def dumps_strips(self):

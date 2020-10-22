@@ -129,8 +129,15 @@ class Rectangle(object):
         """
         assert isinstance(pt_ll, Point)
         assert isinstance(pt_ur, Point)
-        self.ll = pt_ll
-        self.ur = pt_ur
+
+        #if the user didnt understand lower left and upper right properly and gave the points in wrong order:
+        if (pt_ll.x>pt_ur.x) or (pt_ll.y>pt_ur.y):
+            self.ll= Point( min(pt_ll.x,pt_ur.x), min(pt_ll.y,pt_ur.y))
+            self.ur= Point( max(pt_ll.x,pt_ur.x), max(pt_ll.y,pt_ur.y))
+
+        else:
+            self.ll = pt_ll
+            self.ur = pt_ur
 
     def __str__(self):
         """Returns WKT String "POLYGON ((x0 y0, x1 y1, ..., x0 y0))"

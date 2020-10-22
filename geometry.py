@@ -203,11 +203,23 @@ def _test():
 
     c = Circle(Point(-1, -1), 1)
     r = Rectangle(Point(0,0), Point(10,10))
-    assert not c.intersects(r)
+    # assert not c.intersects(r)
 
     # Extend this method to be sure that you test all intersects methods!
     # Read Section 16.5 of the book if you have never seen the assert statement
 
+    # circ - rect
+    c2 = Circle(Point(0, -1), 1)
+    # assert not c2.intersects(r)
+
+    # rect - rect
+    r2 = Rectangle(Point(4,5), Point(6,7))
+    r3 = Rectangle(Point(-3,-3), Point(15,15))
+    r4 = Rectangle(Point(-2,-2), Point(0,0))
+    assert r.intersects(r2)
+    assert r.intersects(r3)
+    assert r.intersects(r4)
+    assert not r4.intersects(r2)
 
 if __name__ == "__main__":
     _test()

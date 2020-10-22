@@ -16,7 +16,7 @@ def read(file_nm, no_strips):
     
     Returns - None or a StripStructure instance
     """
-    with open ("points2.txt", 'r') as file_nm:
+    with open ("filenm", 'r') as file_nm:
         line = [c for c in file_nm.readlines() if not c.startswith('#')]
         bbox = (line[0].strip().split())
         if len(bbox) == 4 :
@@ -26,7 +26,7 @@ def read(file_nm, no_strips):
                 for i in range (1,len(list(line))):
                     a.append(line[i].strip().split(" "))
                 for j in a:
-                    b.append_point(Point(i[0], i[1]))
+                    b.append_point(Point(j[0], j[1]))
                 return b
         else :
             return None

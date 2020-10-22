@@ -17,8 +17,16 @@ def parse(geom_str):
     
     Returns - Point, Circle, or Rectangle
     """
-    pass
-
+    geom = geom_str.split()
+    if geom_str.startswith('p'):
+        return Point(geom[1], geom[2])
+    elif geom_str.startswith('c'):
+        centerofcircle = Point(geom[1], geom[2])
+        return Circle(centerofcircle, geom[3])
+    elif geom_str.startswith('r'):
+        lowleft = Point(geom[1], geom[2])
+        upperright = Point(geom[3], geom[4])
+        return Rectangle(lowleft, upperright)
 
 def print_statistics(result):
     """Prints statistics for the resulting list of Points of a query

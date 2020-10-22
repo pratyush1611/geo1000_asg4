@@ -114,7 +114,7 @@ class StripStructure(object):
         Returns - None
         """
         # format for print output: #1 with 33 points, ll: POINT (0.0 0.0), ur: POINT (2.0 10.0)
-        print(f"No. of strips in the structure: {len(self.strips)}")
+        print(f"{len(self.strips)} strips")
 
         for id, strip in enumerate(self.strips):
             print(f"#{id+1} with {len(strip.points)} points, ll: POINT({strip.rect.ll}), ur: POINT({strip.rect.ur})")

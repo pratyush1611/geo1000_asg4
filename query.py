@@ -98,20 +98,27 @@ def main():
     print("Welcome to {0}.".format(basename(__file__)))
     print("=" * 76)
     print_help()
+
     while True:
-        in_str = input("your command>>>\n").lower()
+        in_str = input("your command>>>\n").lower().strip()
+    
         if in_str.startswith("quit"):
             print("Bye, bye.")
             return
+    
         elif in_str.startswith("help"):
             print_help()
+    
         elif in_str.startswith("open"):
             filenm, nstrips = in_str.replace("open ", "").split(" into ")
             structure = read(filenm, int(nstrips))
             structure.print_strip_statistics()
+       
         elif in_str.startswith("p") or in_str.startswith("c") or in_str.startswith("r"):
+       
             if structure is None:
                 print("No points read yet, open a file first!")
+       
             else:
                 print_statistics(structure.query(parse(in_str)))
 

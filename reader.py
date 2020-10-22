@@ -21,10 +21,11 @@ def read(file_nm, no_strips):
         bbox = (line[0].strip().split())
         if len(bbox) == 4 :
             if bbox [2] > bbox [0] and bbox [3] > bbox [1] : 
-                a = []
+                # a = []
                 b = StripStructure(Rectangle(Point(bbox[0], bbox[1]), Point(bbox[2], bbox[3])), no_strips)
-                for i in range (1,len(list(line))):
-                    a.append(line[i].strip().split(" "))
+                # for i in range (1,len(list(line))):
+                #     a.append(line[i].strip().split(" "))
+                a = [i.split() for i in line[1:]]
                 for j in a:
                     b.append_point(Point(j[0], j[1]))
                 return b

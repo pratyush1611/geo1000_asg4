@@ -18,14 +18,18 @@ def parse(geom_str):
     Returns - Point, Circle, or Rectangle
     """
     geom = geom_str.split()
+
+    #POINT
     if geom_str.startswith('p'):
-        return Point(geom[1], geom[2])
+        return Point(float(geom[1]), float(geom[2]) )
+    #CIRCLE
     elif geom_str.startswith('c'):
-        centerofcircle = Point(geom[1], geom[2])
-        return Circle(centerofcircle, geom[3])
+        centerofcircle = Point(float(geom[1]), float(geom[2]) )
+        return Circle(centerofcircle, float(geom[3]) )
+    #RECTANGLE
     elif geom_str.startswith('r'):
-        lowleft = Point(geom[1], geom[2])
-        upperright = Point(geom[3], geom[4])
+        lowleft    = Point(float(geom[1]), float(geom[2]) )
+        upperright = Point(float(geom[3]), float(geom[4]) )
         return Rectangle(lowleft, upperright)
 
 def print_statistics(result):
@@ -48,6 +52,7 @@ def print_statistics(result):
 +--------------+
 + Result       +
 +--------------+""")
+#TODO: add no of points
         print(f"leftmost : {left} id: {id(left)}")
         print(f"rightmost: {right} id: {id(right)}")
     else :

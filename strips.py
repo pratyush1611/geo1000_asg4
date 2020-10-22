@@ -117,7 +117,7 @@ class StripStructure(object):
         print(f"{len(self.strips)} strips")
 
         for id, strip in enumerate(self.strips):
-            print(f"#{id+1} with {len(strip.points)} points, ll: POINT({strip.rect.ll}), ur: POINT({strip.rect.ur})")
+            print(f"#{id+1} with {len(strip.points)} points, ll: {strip.rect.ll}, ur: {strip.rect.ur}")
             # print(f"ID: {id+1}")
             # print(f"No. of points in strips: {len(strip.points)}")
             # print(f"Lower left of strip: {strip.rect.ll}")

@@ -151,7 +151,20 @@ class Rectangle(object):
         elif isinstance(other, Circle):
             return(other.intersects(self))
         elif isinstance(other, Rectangle): #using Separating Axis Theorem
-            return not (self.ur.x < other.ll.x or self.ll.x > other.ur.x or self.ur.y < other.ll.y or self.ll.y > other.ur.y)
+            # from separating axis theorem
+            # return not (self.ur.x < other.ll.x or self.ll.x > other.ur.x or self.ur.y < other.ll.y or self.ll.y > other.ur.y)
+            
+            #other implementation
+            if( (self.ll.x <= other.ll.x + other.width()) and 
+                (self.ll.x + self.width() >= other.ll.x) and
+                (self.ll.y <= other.ll.y + other.height()) and 
+                (self.ll.y + self.height() >= other.ll.y) ):
+                return (True)
+            else:
+                return(False)
+
+            # return( True if(  ) else False)
+
 
     def width(self):
         """Returns the width of the Rectangle.

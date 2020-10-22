@@ -53,6 +53,7 @@ def print_statistics(result):
 + Result       +
 +--------------+""")
 #TODO: add no of points
+        print ("number of overlapping points :", len(result), "point(s)")
         print(f"leftmost : {left} id: {id(left)}")
         print(f"rightmost: {right} id: {id(right)}")
     else :

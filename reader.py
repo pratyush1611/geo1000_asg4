@@ -16,8 +16,8 @@ def read(file_nm, no_strips):
     
     Returns - None or a StripStructure instance
     """
-    with open ("filenm", 'r') as file_nm:
-        line = [c for c in file_nm.readlines() if not c.startswith('#')]
+    with open (file_nm, 'r') as fh:
+        line = [c for c in fh.readlines() if not c.startswith('#')]
         bbox = (line[0].strip().split())
         if len(bbox) == 4 :
             if bbox [2] > bbox [0] and bbox [3] > bbox [1] : 

@@ -1,9 +1,7 @@
 # GEO1000 - Assignment 4
 # Authors: Maundri Prohanggo & Pratyush Kumar
 # Studentnumbers: 5151279 & 5359252
-#%%
 import math
-#%%
 # __all__ leaves out _test method and only makes
 # the classes available for "from geometry import *":
 __all__ = ["Point", "Circle", "Rectangle"] 
@@ -51,6 +49,7 @@ class Circle(object):
         """Constructor. 
         Takes the center point and radius defining the Circle.
         """
+
         assert radius > 0
         assert isinstance(center, Point)
         self.center = center
@@ -210,7 +209,7 @@ def _test():
 
     # circ - rect
     c2 = Circle(Point(0, -1), 1)
-    # assert not c2.intersects(r)
+    assert  c2.intersects(r)
 
     # rect - rect
     r2 = Rectangle(Point(4,5), Point(6,7))

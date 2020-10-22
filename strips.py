@@ -28,11 +28,11 @@ class StripStructure(object):
         # should have no_strips no of strips as rectangle instances, need to divide the extent into multiple rects
         ll = extent.ll
         ur = extent.ur
-        del_x = ur.x - ll.x 
+        del_x = extent.width
 
-        strip_leng= del_x/no_strips
+        strip_leng = del_x/no_strips
         new_ll_x = ll.x
-        new_ur_x = ur.x
+        new_ur_x = ll.x + strip_leng
         for _ in range(no_strips):
             
             

@@ -37,8 +37,17 @@ def print_statistics(result):
     
     Returns - None
     """
-    pass
-
+    if len(result)>0:
+        left = right = result[0]
+        for point in result:
+            if point.x < left.x or (point.x == left.x and point.y < left.y):
+                left = point
+            if point.x > right.x or (point.x == right.x and point.y > right.y):
+                right = point
+        print ("leftmost : POINT", left, "id :", id(left))
+        print ("righmost : POINT", right, "id :", id(right))
+    else :
+        print("no overlapping points")
 
 def print_help():
     """Prints a help message to the user, what can be done with the program.

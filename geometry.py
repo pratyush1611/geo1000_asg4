@@ -19,7 +19,9 @@ class Point(object):
     def __str__(self):
         """Returns WKT String "POINT (x y)".
         """
-        return( f"POINT ({self.x} {self.y})" )
+        x_val = self.x
+        y_val = self.y
+        return( f"POINT ({round(x_val, 6)} {round(y_val, 6)})" )
 
     def intersects(self, other):
         """Checks whether other shape has any interaction with
